@@ -1,0 +1,16 @@
+FROM node:latest as build
+
+WORKDIR /server
+
+
+COPY package*.json ./
+RUN npm install
+
+FROM node:latest as run
+WORKDIR /server
+COPY server-api.js server-api.js
+COPY --from=build /server /server
+COPY .env .env
+COPY unleash-server.js unleash-server.js
+EXPOSE 3000
+CMD ["node", "--env-file=.env","server-api.js"]
