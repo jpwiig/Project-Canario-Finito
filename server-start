@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+# starting node server
+
+echo "starting server"
+# sleep(3)
+node --env-file=server/.env server/server-api.js
