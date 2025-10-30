@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "express": "^5.1.0",
-    "path": "^0.12.7",
-    "unleash-client": "^6.7.0",
-    "unleash-proxy-client": "^3.7.8"
-  }
-}
