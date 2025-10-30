@@ -1,0 +1,4 @@
+#! /bin/env bash
+
+docker build -t feature-flag .
+docker run -p 3000:3000 feature-flag

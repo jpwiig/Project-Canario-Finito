@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     alert("FEATURE IS ENABLED!!!")
     document.getElementById("feat").classList.remove("hidden")
 } else {
-    let out = "<h1> nothin here yet! </h1>"
+    let out = "<h1> just be pacient my friend </h1>"
 
     document.getElementById("stuff").innerHTML+=out
 }
-    
+
 })
 
 async function fetchFlag(){
