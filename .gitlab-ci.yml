@@ -6,18 +6,22 @@ stages:
 
 build-job: 
   stage: build
+  image: node:latest
 
 test: 
   stage: test
+  image: docker:latest
   script:
     - echo "testing things"
 
 stage-release-job:
   stage: stage-release
+  image: node:latest
   script:
     - echo "staging"
 
 release: 
   stage: release
+  image: ubuntu:latest
   script: 
     - echo "realeasing"
