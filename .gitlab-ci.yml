@@ -20,7 +20,7 @@ stage-release-job:
   script:
   - echo "staging"
 
-release: 
+release-job: 
   stage: release
   image: ubuntu:latest
   script: 
