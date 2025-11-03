@@ -14,10 +14,10 @@ test:
 
 stage-release-job:
   stage: stage-release
-  scripts:
+  script:
     - echo "staging"
 
 release: 
   stage: release
-  scripts: 
+  script: 
     - echo "realeasing"
