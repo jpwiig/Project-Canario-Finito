@@ -1,8 +1,8 @@
 stages: 
-- build
-- test
-- stage-release
-- release
+  - build
+  - test
+  - stage-release
+  - release
 
 build-job: 
   stage: build
