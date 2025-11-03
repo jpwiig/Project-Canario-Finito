@@ -5,19 +5,19 @@ stages:
 - release
 
 build-job: 
-stage: build
+  stage: build
 
 test: 
-stage: test
-script:
-  - echo "testing things"
+  stage: test
+  script:
+    - echo "testing things"
 
 stage-release-job:
-stage: stage-release
-scripts:
-  - echo "staging"
+  stage: stage-release
+  scripts:
+    - echo "staging"
 
 release: 
-stage: release
-scripts: 
-  - echo "realeasing"
+  stage: release
+  scripts: 
+    - echo "realeasing"
