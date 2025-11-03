@@ -1,4 +1,4 @@
 #! /bin/env bash
 echo "stopping"
 
-docker stop $1
+docker stop *
