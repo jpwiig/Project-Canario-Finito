@@ -6,16 +6,24 @@
 Websites for the canario project, the structure is quite simple!
 
 In the `server` folder is the featureflag logic. Currently serving to localhost, each web folder is a respective prototype server. 
-The `accessability` is the pipeline for testing accessability with [pa11y](https://2025.javazone.no/en/program/8fd8e3c9-b979-4b0b-9d97-0a2b0a44d7c4?__EXPO_ROUTER_key=undefined-Szt_ZSpLtcQ74MVmETSBH) 
+The `accessability` is the pipeline for testing accessability with [pa11y](https://2025.javazone.no/en/program/8fd8e3c9-b979-4b0b-9d97-0a2b0a44d7c4?__EXPO_ROUTER_key=undefined-Szt_ZSpLtcQ74MVmETSBH). This is added as a git submodule. 
 ## to start server: 
 
 change credentials to the respective credentials for the services. '
 
-run the startup script, or the command:
-
-```node
-node --env-file=server/.env 
+run the startup script, or the commands:
+```bash
+cd server
 ```
+
+```js
+node --env-file=server/.env server-api.js
+```
+
+## deployment
+## haproxy
+``
+
 
 dockerfile TBD
 
