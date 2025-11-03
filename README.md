@@ -5,8 +5,8 @@
 
 Websites for the canario project, the structure is quite simple!
 
-In `server` folder is the featureflag logic. Currently serving to localhost, each web folder is a respective prototype server. 
-
+In the `server` folder is the featureflag logic. Currently serving to localhost, each web folder is a respective prototype server. 
+The `accessability` is the pipeline for testing accessability with [pa11y](https://2025.javazone.no/en/program/8fd8e3c9-b979-4b0b-9d97-0a2b0a44d7c4?__EXPO_ROUTER_key=undefined-Szt_ZSpLtcQ74MVmETSBH) 
 ## to start server: 
 
 change credentials to the respective credentials for the services. '
