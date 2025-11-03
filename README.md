@@ -22,7 +22,8 @@ node --env-file=server/.env server-api.js
 
 ## deployment
 ## haproxy
-``
+proxy will work as our proxy to configure canario release
+---
 
 
 dockerfile TBD
