@@ -18,3 +18,57 @@ node --env-file=server/.env
 ```
 
 dockerfile TBD
+
+
+Structure of the project: 
+
+```bash
+project-canario
+├── accessability
+│   ├── accessabilitiy-testing.sh
+│   ├── dockerfile
+│   ├── pa11y-config
+│   │   └── pa11y.json
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── report.csv
+│   ├── report.html
+│   ├── test.html
+│   └── test-script.sh
+├── deploy
+│   └── docker-compose.yml
+├── haproxy
+│   ├── dockerfile
+│   └── haproxy-config.cfg
+├── README.md
+├── server
+│   ├── dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── run-locally
+│   ├── server-api.js
+│   ├── server.js
+│   ├── stop-locally
+│   └── unleash-server.js
+├── server-start
+├── swarm.yml
+├── web-1
+│   ├── img
+│   │   └── Gemini_Generated_Image_x4imp8x4imp8x4im.png
+│   ├── index.css
+│   ├── index.html
+│   └── index.js
+└── web-2
+    ├── index.css
+    ├── index.html
+    └── index.js
+```
+
+
+
+
+
+
+
+
+
