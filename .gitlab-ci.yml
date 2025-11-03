@@ -12,16 +12,16 @@ test:
   stage: test
   image: docker:latest
   script:
-    - echo "testing things"
+  - echo "testing things"
 
 stage-release-job:
   stage: stage-release
   image: node:latest
   script:
-    - echo "staging"
+  - echo "staging"
 
 release: 
   stage: release
   image: ubuntu:latest
   script: 
-    - echo "realeasing"
+  - echo "realeasing"
