@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 })
 
 async function fetchFlag(){
-    const url = 'http://localhost:3000/api/flag'
+const url = 'http://localhost:5000/api/flag'
 const feat = await fetch(url)
 let json = await feat.json()
 console.log(json.enabled)
