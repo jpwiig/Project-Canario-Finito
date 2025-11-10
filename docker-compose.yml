@@ -14,6 +14,14 @@ services:
     networks:
       - unleash
   #    - web-1
+    deploy:
+       replicas: 2
+       restart_policy:
+          condition: on-failure
+       placement:
+          constraints: [node.role == worker]
+
+      
   web-2:
     #image: web-2 
     build: ./web-2/
@@ -22,6 +30,13 @@ services:
     networks:
      - unleash
   #   - web-2
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == worker]
+
   unleash-backend:
    # image: unleash-backend
     build: ./server/
@@ -32,10 +47,12 @@ services:
   #    - web-1
   #    - web-2
 
-  canario:
-    image: ubuntu:latest
+  load-balancer:
+    build: ./nginx/
     ports:
       - 8080:8080
+    networks: 
+    - unleash
 
 networks:
   unleash: 

@@ -1,0 +1,14 @@
+services:
+  web-1:
+     build: ./web-1/
+     ports:
+       - 5011:5011 
+     deploy: 
+      replicas: 2   
+
+web-2:
+     build: ./web-2/
+     ports:
+       - 5010:5010 
+     deploy: 
+      replicas: 2   
