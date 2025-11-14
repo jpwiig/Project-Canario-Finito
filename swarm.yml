@@ -1,14 +1,54 @@
+
+ # web-1: 
+ #   name: web-1
+ #   external: false
+ # web-2: 
+ #   name: web-2
+ #   external: false
 services:
   web-1:
-     build: ./web-1/
-     ports:
-       - 5011:5011 
-     deploy: 
-      replicas: 2   
+    #image: web-1
+    build: ./web-1/
+    ports:
+      - 5011:5011
+    deploy: 
+      replicas: 2
+    networks:
+      - unleash
+  #    - web-1
 
-web-2:
-     build: ./web-2/
-     ports:
-       - 5010:5010 
-     deploy: 
-      replicas: 2   
+      
+  web-2:
+    #image: web-2 
+    build: ./web-2/
+    ports:
+      - 5010:5010
+    deploy: 
+      replicas: 2
+      
+    networks:
+     - unleash
+  #   - web-2
+    
+  unleash-backend:
+   # image: unleash-backend
+    build: ./server/
+    ports:
+      - 5000:5000
+    networks:
+      - unleash
+  #    - web-1
+  #    - web-2
+
+  load-balancer:
+    build: ./nginx/
+    ports:
+      - 8080:8080
+    networks: 
+    - unleash
+
+networks:
+  unleash: 
+    name: unleash
+    driver: bridge
+#    external: false
