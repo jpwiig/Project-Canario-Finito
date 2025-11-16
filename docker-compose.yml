@@ -8,7 +8,7 @@
 services:
   web-1:
     #image: web-1
-    image: omcr.cs.oslomet.no:443/s364697/project-canario/web-1
+    image: omcr.cs.oslomet.no:443/s364697/project-canario/web-1:latest
     ports:
       - 5014:5014
     #  - 5015:5015 #comment out for docker swarm
@@ -20,11 +20,12 @@ services:
        restart_policy:
           condition: on-failure
        placement:
-          constraints: [node.role == worker]
-
+        constraints:
+         - node.labels.zone == realease
+        max_replicas_per_node: 1 
       
   web-2:
-    image: omcr.cs.oslomet.no:443/s364697/project-canario/web-2
+    image: omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest
     ports:
       - 5013:5013
     #  - 5012:5012 #comment out for docker swarm
@@ -35,27 +36,35 @@ services:
       restart_policy:
         condition: on-failure
       placement:
-        constraints: [node.role == worker]
-
+       constraints:
+        - node.labels.zone == realease
+       max_replicas_per_node: 1 
   unleash-backend:
    # image: unleash-backend
-    image: omcr.cs.oslomet.no:443/s364697/project-canario
+    image: omcr.cs.oslomet.no:443/s364697/project-canario:latest
     ports:
       - 5000:5000
     networks:
       - unleash
   #    - web-1
   #    - web-2
-
+    deploy:
+      placement: 
+       constraints: 
+        - node.labels.zone == UB
   load-balancer:
-    image: omcr.cs.oslomet.no:443/s364697/project-canario/nginx
+    image: omcr.cs.oslomet.no:443/s364697/project-canario/nginx:latest
     ports:
       - 8080:8080
     networks: 
     - unleash
-
+    deploy:
+      placement:
+        constraints: 
+          - node.labels.zone == load-balancer
 networks:
   unleash: 
-    name: unleash
-    driver: bridge
+    #name: unleash
+    driver: overlay
+    #    driver: bridge
 #    external: false
