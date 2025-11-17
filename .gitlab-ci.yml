@@ -19,10 +19,10 @@ build-job:
 
 test: 
   stage: test
-  image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
+  #image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
   script:
   - echo "testing things"
-  - ./accessability-testing.sh web-1/index.html 2
+  - ./accessability/accessability-testing.sh web-1/index.html 2
 
 stage-release-job:
   stage: stage-release
