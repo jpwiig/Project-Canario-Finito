@@ -33,9 +33,11 @@ services:
      - unleash
     deploy:
       replicas: 2
-      restart_policy:
+      parallelism: 1
+    order: start-first
+    restart_policy:
         condition: on-failure
-      placement:
+    placement:
        constraints:
         - node.labels.zone == realease
        max_replicas_per_node: 1 
@@ -49,6 +51,10 @@ services:
   #    - web-1
   #    - web-2
     deploy:
+         parallelism: 1
+    order: start-first
+    restart_policy:
+      condition: on-failure
       placement: 
        constraints: 
         - node.labels.zone == UB
