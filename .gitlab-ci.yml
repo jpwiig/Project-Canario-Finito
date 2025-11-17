@@ -22,7 +22,9 @@ test:
   #image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
   script:
   - echo "testing things"
-  - ./accessability/test-script.sh cv.jpwiig.dev 2
+  - cd accessability
+  - ls
+  - ./test-script.sh cv.jpwiig.dev 2
 
 stage-release-job:
   stage: stage-release
