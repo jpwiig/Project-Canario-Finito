@@ -41,7 +41,7 @@ release-job:
   script:
     - echo "it's time to release"
     - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
-    - docker stack deploy -c  docker-compose.yml canario
+    - ./start-stack 
 
 #release-job: 
 #  stage: release
