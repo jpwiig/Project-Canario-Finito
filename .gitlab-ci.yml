@@ -1,22 +1,16 @@
 stages: 
-  - worker-cleanup-build
+  - cleanup
   - test
+  - build
   - stage-release
   - release
 
-build-job: 
-  stage: worker-cleanup-build
-  # image: docker:latest
+cleanup-job:
+  stage: cleanup
+  image: docker:latest
   script:
-    - echo "worker-cleanup-build"
+    - echo "cleanup"
     - docker system prune -a -f
-    - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
-    #   - docker login omcr.cs.oslomet.no:443
-    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest web-2/
-    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-1:latest web-1/
-    - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-1:latest
-    - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest
-
 test: 
   stage: test
   #image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
@@ -26,6 +20,20 @@ test:
   - ls
   - ./test-script.sh web-1/index.html 8 
   - ./test-script.sh web-2/index.html 10
+
+build-job: 
+  stage: build
+  # image: docker:latest
+  script:
+    - echo "building and pushing images"
+    - docker system prune -a -f
+    - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
+    #   - docker login omcr.cs.oslomet.no:443
+    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest web-2/
+    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-1:latest web-1/
+    - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-1:latest
+    - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest
+
 
 stage-release-job:
   stage: stage-release
