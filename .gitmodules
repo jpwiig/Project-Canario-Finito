@@ -1,0 +1,3 @@
+[submodule "accessability"]
+	path = accessability
+	url = git@gitlab.cs.oslomet.no:s364697/canario-template.git
