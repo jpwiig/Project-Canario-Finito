@@ -6,7 +6,7 @@ stages:
 
 build-job: 
   stage: build
-  image: node:latest
+  # image: docker:latest
   script:
     - echo "worker-cleanup-build"
     - docker system prune -a
