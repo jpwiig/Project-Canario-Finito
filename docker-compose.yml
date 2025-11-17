@@ -17,6 +17,9 @@ services:
   #    - web-1
     deploy:
        replicas: 2
+       update_config:
+        parallelism: 1
+        order: start-first
        restart_policy:
           condition: on-failure
        placement:
@@ -33,8 +36,9 @@ services:
      - unleash
     deploy:
       replicas: 2
-      parallelism: 1
-    order: start-first
+      update_config:
+        parallelism: 1
+        order: start-first
     restart_policy:
         condition: on-failure
     placement:
@@ -51,8 +55,6 @@ services:
   #    - web-1
   #    - web-2
     deploy:
-         parallelism: 1
-    order: start-first
     restart_policy:
       condition: on-failure
       placement: 
