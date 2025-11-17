@@ -8,7 +8,7 @@ build-job:
   stage: build
   image: node:latest
   script:
-    - echo "building"
+    - echo "worker-cleanup-build"
     - docker system prune -a
     - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest web-2/
     - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-1:latest web-1/
