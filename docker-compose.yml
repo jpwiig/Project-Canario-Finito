@@ -34,8 +34,8 @@ services:
     deploy:
       replicas: 2
       parallelism: 1
-    order: start-first
-    restart_policy:
+      order: start-first
+      restart_policy:
         condition: on-failure
     placement:
        constraints:
@@ -50,8 +50,6 @@ services:
       - unleash
   #    - web-1
   #    - web-2
-    deploy:
-         parallelism: 1
     order: start-first
     restart_policy:
       condition: on-failure
