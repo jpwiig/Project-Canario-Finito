@@ -5,7 +5,7 @@ stages:
   - release
 
 build-job: 
-  stage: build
+  stage: worker-cleanup-build
   # image: docker:latest
   script:
     - echo "worker-cleanup-build"
