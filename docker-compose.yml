@@ -39,12 +39,12 @@ services:
       update_config:
         parallelism: 1
         order: start-first
-    restart_policy:
+      restart_policy:
         condition: on-failure
-    placement:
-       constraints:
+      placement:
+        constraints:
         - node.labels.zone == realease
-       max_replicas_per_node: 1 
+        max_replicas_per_node: 1 
   unleash-backend:
    # image: unleash-backend
     image: omcr.cs.oslomet.no:443/s364697/project-canario:latest
