@@ -22,6 +22,7 @@ test:
   #image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
+    GIT_SUBMODULE_FORCE_HTTPS: "true"
   script:
   - echo "testing things"
   - ls -R .
