@@ -17,6 +17,9 @@ services:
   #    - web-1
     deploy:
        replicas: 2
+       update_config:
+        parallelism: 1
+        order: start-first
        restart_policy:
           condition: on-failure
        placement:
@@ -33,9 +36,10 @@ services:
      - unleash
     deploy:
       replicas: 2
-      parallelism: 1
-      order: start-first
-      restart_policy:
+      update_config:
+        parallelism: 1
+        order: start-first
+    restart_policy:
         condition: on-failure
     placement:
        constraints:
@@ -50,12 +54,10 @@ services:
       - unleash
   #    - web-1
   #    - web-2
-    order: start-first
-    restart_policy:
-      condition: on-failure
-      placement: 
-       constraints: 
-        - node.labels.zone == UB
+    deploy:
+       placement: 
+        constraints: 
+         - node.labels.zone == UB
   load-balancer:
     image: omcr.cs.oslomet.no:443/s364697/project-canario/nginx:latest
     ports:
