@@ -48,14 +48,14 @@ services:
   unleash-backend:
    # image: unleash-backend
      image: omcr.cs.oslomet.no:443/s364697/project-canario:latest
-    ports:
+     ports:
       - 5000:5000
-    networks:
+     networks:
       - unleash
   #    - web-1
   #    - web-2
-    deploy:
-       placement: 
+     deploy:
+       placement:  
         constraints: 
          - node.labels.zone == UB
   load-balancer:
