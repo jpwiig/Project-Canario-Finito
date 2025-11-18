@@ -63,6 +63,8 @@ services:
       - 8081:8081
     networks: 
     - unleash
+    volumes:
+      - nginx-conf/weight.conf:/etc/nginx/weight.conf
     deploy:
       placement:
         constraints: 

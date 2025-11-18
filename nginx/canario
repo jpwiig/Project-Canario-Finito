@@ -1,0 +1,29 @@
+#! /bin/env bash
+
+W_FILE="weight.conf"
+NGINX_SWARM="canario_nginx"
+
+weighs=(25 50 75)
+
+
+weight_update(){
+    local canary_weight=$1
+    local weight_stable=$((100 - canary_weight))
+
+    echo "set \$STABLE $weight_stable;" > $W_FILE
+    echo "set \$CANARY $canary_weight;" >> $W_FILE
+
+    ssh debian@192.168.44.73 'docker exec -i $(docker container ls --filter name=canario_load-balancer -q) nginx -s reload'
+    echo "weights updated: \n STABLE: $weight_stable \n CANARY: $canary_weight"
+
+
+}
+
+for w in "${weighs[@]}"; do
+    echo "CANARY: $w"
+    weight_update $w 
+    echo "stabilizing for a couple of moments" 
+    sleep 120
+done 
+
+echo "lolololol birds" 
