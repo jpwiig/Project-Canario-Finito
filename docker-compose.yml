@@ -52,10 +52,8 @@ services:
       - 5000:5000
      networks:
       - unleash
-  #    - web-1
-  #    - web-2
      deploy:
-       placement:  
+       placement: 
         constraints: 
          - node.labels.zone == UB
   load-balancer:
