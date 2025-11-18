@@ -41,6 +41,8 @@ release-job:
   script:
     - echo "it's time to release"
     - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
+    - docker pull omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID
+    - docker pull omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID
     - ./start-stack 
 
 #release-job: 
