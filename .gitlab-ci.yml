@@ -12,7 +12,7 @@ before_script:
   - ssh-add "$SSH_PRIVATE_KEY"
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - ssh-keyscan -H debian@192.168.44.73 >> ~/.ssh/known_hosts
+  - ssh-keyscan -H 192.168.44.73 >> ~/.ssh/known_hosts
 
 
 cleanup-job:
