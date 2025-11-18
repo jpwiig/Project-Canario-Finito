@@ -19,7 +19,7 @@ services:
        replicas: 2
        update_config:
         parallelism: 1
-        order: start-first
+ #       order: start-first
        restart_policy:
           condition: on-failure
        placement:
@@ -38,7 +38,7 @@ services:
       replicas: 2
       update_config:
         parallelism: 1
-        order: start-first
+#        order: start-first
       restart_policy:
         condition: on-failure
       placement:
