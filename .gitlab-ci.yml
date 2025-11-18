@@ -35,6 +35,14 @@ build-job:
     - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-2:latest
 
 
+release-job:
+  stage: release
+  image: docker:latest
+  script:
+    - echo "it's time to release"
+    - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
+    - ./start-stack 
+
 #release-job: 
 #  stage: release
 #  image: ubuntu:latest
