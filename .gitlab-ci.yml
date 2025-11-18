@@ -43,8 +43,8 @@ release-job:
     - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
     - docker pull omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID
     - docker pull omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID
-    - docker service update --image omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID web-1
-    - docker service update --image omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID web-2
+    - docker service update --image omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID canario_web-1
+    - docker service update --image omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID canario_web-2
 #    - ./start-stack 
 
 #release-job: 
