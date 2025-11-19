@@ -21,15 +21,7 @@ cleanup-job:
   script:
     - echo "cleanup"
     - docker system prune -a -f
-test: 
-  stage: test
-  #image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
-  script:
-  - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
-  - echo "testing things"
-  - ls
-  - ./test-script.sh /home/ubuntu/project-canario/web-1/index.html 8 
-  - ./test-script.sh /home/ubuntu/project-canario/web-2/index.html 10
+
 
 build-job: 
   stage: build
@@ -44,6 +36,22 @@ build-job:
     - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID
     - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID
 
+
+test: 
+  stage: test
+  #image: omcr.cs.oslomet.no:443/s364697/project-canario/accessability
+  script:
+  - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
+  - echo "testing things"
+  - ls
+  - docker run -d -p 5010:5010 --name=web-1-local omcr.cs.oslomet.no:443/s364697/project-canario/web-2:5430
+  - docker run -d -p 5011:5011 --name=web-2-local omcr.cs.oslomet.no:443/s364697/project-canario/web-1:5430
+  - ./test-script.sh /home/ubuntu/project-canario/web-1/index.html 8 
+  - ./test-script.sh /home/ubuntu/project-canario/web-2/index.html 10
+  - docker stop web-1 web-2
+  - docker container rm web-1-local web-2-local
+  - docker rmi omcr.cs.oslomet.no:443/s364697/project-canario/web-1:5430 omcr.cs.oslomet.no:443/s364697/project-canario/web-2:5430
+  - docker image ls -a
 
 release-job:
   stage: release
