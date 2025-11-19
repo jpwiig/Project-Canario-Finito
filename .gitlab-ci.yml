@@ -28,8 +28,8 @@ test:
   - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
   - echo "testing things"
   - ls
-  - ./test-script.sh $HOME/web-1/index.html 8 
-  - ./test-script.sh $HOME/web-2/index.html 10
+  - ./test-script.sh /home/ubuntu/project-canario/web-1/index.html 8 
+  - ./test-script.sh /home/ubuntu/project-canario/web-2/index.html 10
 
 build-job: 
   stage: build
