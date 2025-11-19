@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
 }
     
 })
-
+//fetching the featureflag API 
 async function fetchFlag(){
     const url = 'http://10.196.244.139:5000/api/flag'
 const feat = await fetch(url)
