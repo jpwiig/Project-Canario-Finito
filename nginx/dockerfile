@@ -1,4 +1,4 @@
 FROM nginx:latest
-
+COPY weight.conf /etc/nginx/weight.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
