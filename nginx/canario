@@ -13,7 +13,7 @@ weight_update(){
     echo "set \$STABLE $weight_stable;" > $W_FILE
     echo "set \$CANARY $canary_weight;" >> $W_FILE
 
-    ssh debian@192.168.44.73 -i $SSH_PRIVATE_KEY 'docker exec -i $(docker container ls --filter name=canario_load-balancer -q) nginx -s reload'
+    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) nginx -s reload
     echo "weights updated: \n STABLE: $weight_stable \n CANARY: $canary_weight"
 
 
