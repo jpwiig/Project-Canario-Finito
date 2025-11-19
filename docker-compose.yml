@@ -64,7 +64,7 @@ services:
     networks: 
     - unleash
     volumes:
-      - /home/ubuntu/project-canario/nginx-conf/weight.conf:/etc/nginx/weight.conf:ro
+      - /home/debian/project-canario/nginx/weight.conf:/etc/nginx/weight.conf:ro
     deploy:
       placement:
         constraints: 
