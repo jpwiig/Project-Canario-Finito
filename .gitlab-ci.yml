@@ -48,7 +48,7 @@ test:
   - docker run -d -p 5011:5011 --name=web-2-local omcr.cs.oslomet.no:443/s364697/project-canario/web-1:5430
   - ./test-script.sh /home/ubuntu/project-canario/web-1/index.html 8 
   - ./test-script.sh /home/ubuntu/project-canario/web-2/index.html 10
-  - docker stop web-1 web-2
+  - docker stop web-1-local web-2-local
   - docker container rm web-1-local web-2-local
   - docker rmi omcr.cs.oslomet.no:443/s364697/project-canario/web-1:5430 omcr.cs.oslomet.no:443/s364697/project-canario/web-2:5430
   - docker image ls -a
