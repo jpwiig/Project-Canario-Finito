@@ -1,7 +1,7 @@
 stages: 
   - cleanup
-  - test
   - build
+  - test
   #- stage-release
   - release
 before_script:
