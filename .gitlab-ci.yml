@@ -31,8 +31,8 @@ build-job:
     - docker system prune -a -f
     - echo "$CI_REGISTRY_PASSWORD" | docker login omcr.cs.oslomet.no:443 -u "$CI_REGISTRY_USER" --password-stdin
     #   - docker login omcr.cs.oslomet.no:443
-    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID
-    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID
+    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID /web-2
+    - docker build -t omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID /web-1
     - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-1:$CI_PIPELINE_ID
     - docker push omcr.cs.oslomet.no:443/s364697/project-canario/web-2:$CI_PIPELINE_ID
 
