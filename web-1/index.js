@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
     const en = await fetchFlag()
 
     if(en){
-    alert("FEATURE IS ENABLED!!!")
+    console.log("FEATURE IS ENABLED!!!")
     document.getElementById("feat").classList.remove("hidden")
 } else {
     let out = "<h1> nothin here yet! </h1>"
