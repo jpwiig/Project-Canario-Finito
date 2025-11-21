@@ -10,10 +10,10 @@ weight_update(){
     local canary_weight=$1
     local weight_stable=$((100 - $canary_weight))
 
-    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-1:5010 weight=[0-9]\+/server web-1:5010 weight=$weight_stable;/" /etc/nginx/nginx.conf
-    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-1:5011 weight=[0-9]\+/server web-1:5011 weight=$weight_stable;/" /etc/nginx/nginx.conf
-    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-2:5010 weight=[0-9]\+/server web-2:5010 weight=$canary_weight;/" /etc/nginx/nginx.conf
-    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-2:5011 weight=[0-9]\+/server web-2:5011 weight=$canary_weight;/" /etc/nginx/nginx.conf
+    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-1:5010 weight=[0-9]\+;/server web-1:5010 weight=$weight_stable;/" /etc/nginx/nginx.conf
+    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-1:5011 weight=[0-9]\+;/server web-1:5011 weight=$weight_stable;/" /etc/nginx/nginx.conf
+    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-2:5010 weight=[0-9]\+;/server web-2:5010 weight=$canary_weight;/" /etc/nginx/nginx.conf
+    docker exec -i $(docker container ls --filter name=canario_load-balancer -q) sed -i "s/server web-2:5011 weight=[0-9]\+;/server web-2:5011 weight=$canary_weight;/" /etc/nginx/nginx.conf
 
     docker exec -i $(docker container ls --filter name=canario_load-balancer -q) nginx -s reload
     echo "weights updated: \n STABLE: $weight_stable \n CANARY: $canary_weight"
