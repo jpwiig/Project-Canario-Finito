@@ -24,6 +24,19 @@ if(!isReady){
 return unleash.isEnabled('newrel')
 }
 
+
+
+export async function selectflag(flagname){
+console.log(flagname)
+if(!isReady){
+    await new Promise((resolve) => {
+        unleash.once('ready', resolve)
+    })
+}
+
+return unleash.isEnabled(flagname)
+}
+
 export function closeUnleash(){
     unleash.destroy()
 }
