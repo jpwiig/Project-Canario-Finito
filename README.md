@@ -1,5 +1,7 @@
 # Project-Canario
-
+---
+This project was made for use on oslomet gitlab, the environment files there are no longer functional and things must be adapted to work with github
+---
 
 ## Description
 
