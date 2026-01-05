@@ -63,7 +63,7 @@ release-job:
     - docker service update --image $CONTAINER_REGISTRY_URL_web1:$CI_PIPELINE_ID canario_web-1
     - docker service update --image $CONTAINER_REGISTRY_URL_web2:$CI_PIPELINE_ID canario_web-2
    
-    - ssh debian@192.168.44.73 -i $SSH_PRIVATE_KEY "/home/debian/project-canario/nginx/canario"
+    - ssh debian@load_balancer_ip -i $SSH_PRIVATE_KEY "/home/debian/project-canario/nginx/canario"
 #    - ./start-stack 
 
 #release-job: 
